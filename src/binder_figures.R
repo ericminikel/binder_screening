@@ -2,8 +2,16 @@ options(stringsAsFactors = F)
 if(interactive()) {
   setwd('~/d/sci/src/binder_screening/')
 }
-library(sqldf)
-library(rcdk)
+
+### LIBRARIES
+
+suppressMessages(library(sqldf))
+suppressMessages(library(rcdk))
+
+
+
+
+### CONSTANTS AND FUNCTIONS
 
 normal_color = '#000123'
 error_color = '#C9C9C9'
@@ -34,6 +42,11 @@ tla_to_ola = function(x) {
   }
   return (x)
 }
+
+
+
+
+
 
 #### TABLE 1 and FIGURE 1: FRAGMENT SCREENING
 
@@ -83,15 +96,6 @@ if (recompute_fragment_properties) {
   frags = read.table('data/fragments/fragments_with_properties.tsv', sep='\t', header=T, quote='', comment.char='')
 }
 
-# check descriptors - make sure all are present?
-sum(is.na(frags$hba))
-sum(is.na(frags$hbd))
-sum(is.na(frags$mw))
-sum(is.na(frags$logp))
-sum(is.na(frags$rotb))
-sum(is.na(frags$tpsa))
-range(frags$logp)
-
 #### TABLE 1
 
 table1 = sqldf("
@@ -104,7 +108,6 @@ table1 = sqldf("
 
 table1$n[table1$disp=='Schreiber chiral collection'] = table1$n[table1$disp=='Schreiber chiral collection'] + 40 # 40 undisclosable structures omitted from fragments.tsv
 table1$stds[table1$disp=='Schreiber chiral collection'] = table1$stds[table1$disp=='Schreiber chiral collection'] + 1 # the 40 include 1 that was in the hit pool and went on to STD NMR
-sum(table1$n)
 
 write.table(table1, 'display_items/table-1.tsv', sep='\t', row.names=F, col.names=T, quote=F)
 
@@ -113,8 +116,9 @@ table1$color = rev(c('#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e'))
 table1$wrap = gsub('(.{1,20})(\\s|$)', '\\1\n', table1$disp) # https://stackoverflow.com/a/2352006/3806692
 table1$wrap = trimws(table1$wrap) # remove terminal line breaks
 
+#### FIGURE 1 - PROPERTIES OF FRAGMENT LIBRARY
+
 resx=300
-#### FIGURE 1 - properties of library
 pdf('display_items/figure-1.pdf',width=6.5,height=2.75)
 
 layout_matrix = matrix(c(1,2,3,1,2,4),nrow=2,byrow=T)
@@ -139,7 +143,7 @@ compliant_color = '#FF9912'
 
 # Congreve 2003 - Rule of 3 - https://www.ncbi.nlm.nih.gov/pubmed/14554012
 # overall Ro3 compliance:
-mean(frags$mw <= 300 & frags$logp <= 3 & frags$hba <= 3 & frags$hbd <= 3)
+# mean(frags$mw <= 300 & frags$logp <= 3 & frags$hba <= 3 & frags$hbd <= 3, na.rm=T)
 
 # MW vs. LOGP
 plot(NA, NA, xlim=c(0,600), ylim=c(-6.5,6.5), xaxs='i', yaxs='i', ann=F, axes=F)
@@ -190,10 +194,7 @@ text(x=1.5, y=.7, labels=paste(percent(compliant,digits=1)), col='black', font=2
 text(x=6.0, y=.7, labels=paste(percent(1-compliant,digits=1)), col='black', font=2)
 mtext('D', side=3, cex=2, adj = -0.3, line = 0.5)
 
-dev.off()
-
-
-
+unnecessary_message = dev.off()
 
 
 
@@ -271,9 +272,6 @@ retest_results = sqldf("
                        from     dsf_primary_avg p, dsf_retest_avg r
                        where    p.smiles = r.smiles
                        ;") 
-nrow(retest_results)
-sum(retest_results$primary_delta < 0)
-sum(retest_results$primary_delta > 0)
 
 dsf_retest_neg_hits_smiles = read.table('data/nibr_dsf/dsf_retest_negative_hits.tsv',sep='\t',header=T,quote='',comment.char='',as.is=T)
 dsf_retest_pos_hits_smiles = read.table('data/nibr_dsf/dsf_retest_positive_hits.tsv',sep='\t',header=T,quote='',comment.char='',as.is=T)
@@ -287,7 +285,6 @@ retest_results$retest_delta = pmax(pmin(retest_results$retest_delta, 3),-3)
 dsf_primary$retested = dsf_primary$smiles %in% retest_results$smiles & (dsf_primary$delta_tm > 3*overall_mad | dsf_primary$delta_tm < -3*overall_mad)
 retest_results$hsqced = retest_results$smiles %in% dsf_hsqc$smiles
 
-
 # identify the highlighted hit in the retest data
 smiles_3c = dsf_primary$smiles[dsf_primary$file_number==54 & dsf_primary$wellnumber==139]
 
@@ -296,7 +293,6 @@ retest_results$hit3c = retest_results$smiles == smiles_3c
 
 hit_color = '#FF2020'
 resx=300
-
 
 #png('display_items/figure-3a.png',width=6.5*resx,height=3*resx,res=resx)
 cairo_pdf('display_items/figure-3a.pdf',width=6.5,height=2)
@@ -313,10 +309,7 @@ mtext(side=4, at=c(-3,3)*overall_mad, line=0.25, text=paste0(c('-','+'),'3 MAD')
 segments(x0=plate_stats2$xp-0.5,x1=plate_stats2$xp+0.5,y0=plate_stats2$delta_tm_median,col=dmso_color)
 rect(xleft=plate_stats2$xp-0.5,xright=plate_stats2$xp+0.5,ybottom=plate_stats2$delta_tm_median-3*plate_stats2$mad,ytop=plate_stats2$delta_tm_median+3*plate_stats2$mad,col=alpha(dmso_color,ci_alpha), border=NA)
 mtext('A', side=3, cex=2, adj = -0.1, line = 0.5)
-dev.off()
-
-
-
+unnecessary_message = dev.off()
 
 #png('display_items/figure-3a.png',width=6.5*resx,height=3*resx,res=resx)
 cairo_pdf('display_items/figure-3b.pdf',width=6.5,height=3)
@@ -337,9 +330,7 @@ par(xpd=F)
 abline(h=c(-3,3)*overall_mad, lty=1, col=dmso_color)
 mtext(side=4, at=c(-3,3)*overall_mad, line=0.25, text=paste0(c('-','+'),'3 MAD'), las=2, col=dmso_color, cex=0.8)
 mtext('B', side=3, cex=2, adj = -0.1, line = 0.5)
-dev.off()
-
-
+unnecessary_message = dev.off()
 
 #png('display_items/figure-3b.png',width=3.5*resx,height=3*resx,res=resx)
 cairo_pdf('display_items/figure-3c.pdf',width=3.5,height=3)
@@ -364,18 +355,17 @@ par(xpd=T)
 points(retest_results$primary_delta[retest_results$hit3c], retest_results$retest_delta[retest_results$hit3c], col=hit_color, pch=0, cex=2.0)
 par(xpd=F)
 mtext('C', side=3, cex=2, adj = -0.1, line = 0.5)
-dev.off()
+unnecessary_message = dev.off()
 
-
-### DSF raw melt curves
-# iconv -c -f utf-16 -t utf-8 spotfire_file > desired_file # https://stackoverflow.com/a/2398403/3806692
+# DSF raw melt curves
+# first do this: iconv -c -f utf-16 -t utf-8 spotfire_file > desired_file # https://stackoverflow.com/a/2398403/3806692
 raw_primary = read.table('data/nibr_dsf/dsf_raw_primary.tsv',sep='\t',header=T,quote='',comment.char='',as.is=T)
 raw_primary = raw_primary[raw_primary$file_number==54,]
 hit_primary = raw_primary[raw_primary$well_number==139,]
 dmso_primary = raw_primary[raw_primary$well_number %% 24 %in% c(0,23),] # this mod division gets cols 23-24 which are in-plate dmso controls
 
 raw_retest = read.table('data/nibr_dsf/dsf_raw_retest.tsv',sep='\t',header=T,quote='',comment.char='',as.is=T)
-dsf_retest[dsf_retest$smiles==smiles_3c,c('file_number','wellnumber')]
+# check which file/well combinations: dsf_retest[dsf_retest$smiles==smiles_3c,c('file_number','wellnumber')]
 dsf_retest$file_well = paste0(dsf_retest$file_number,'-',dsf_retest$wellnumber)
 hit_file_wells = dsf_retest[dsf_retest$smiles==smiles_3c,c('file_well')]
 raw_retest$file_well = paste0(raw_retest$file_number,'-',raw_retest$well_number)
@@ -387,9 +377,8 @@ hit_retest = raw_retest[raw_retest$file_well %in% hit_file_wells,]
 raw_retest_dmso = read.table('data/nibr_dsf/dsf_raw_retest_dmso.tsv',sep='\t',header=T,quote='',comment.char='',as.is=T)
 colnames(raw_retest_dmso) = gsub('[^a-z0-9_]','_',tolower(colnames(raw_retest_dmso)))
 raw_retest_dmso = raw_retest_dmso[raw_retest_dmso$file_number %in% hit_retest$file_number,]
-mean(raw_retest_dmso$well_number %% 24 %in% c(0,23)) # check that all are final 2 columns - 1 is good
+# mean(raw_retest_dmso$well_number %% 24 %in% c(0,23)) # check that all are final 2 columns - 1 is good
 raw_retest_dmso$file_well = paste0(raw_retest_dmso$file_number,'-',raw_retest_dmso$well_number)
-
 
 resx=300
 #png('display_items/figure-3c.png',width=3.25*resx,height=3.25*resx,res=resx)
@@ -438,9 +427,16 @@ leg = data.frame(disp=c('DMSO replicate','DMSO mean','hit replicate','hit mean')
                  lwd=rep(c(.25,2),2))
 legend('topleft',legend=leg$disp,col=leg$col,lwd=leg$lwd,text.col=leg$col,bty='n',cex=0.8)
 mtext('D', side=3, cex=2, adj = -0.1, line = 0.5)
-dev.off()
+unnecessary_message = dev.off()
 
-### TABLE 3
+
+
+
+
+
+
+
+### TABLE 3: SUMMARY OF DSF SCREENING
 
 table3 = data.frame(screen=c('Primary (singleton)', 'Validation (triplicate)', 'HSQC'),
                     compounds=integer(3),
@@ -469,13 +465,12 @@ write.table(table3, 'display_items/table-3.tsv', sep='\t', col.names=T, row.name
 
 
 
-
-
-resx=600
+### FIGURE 4: DEL MACROCYCLE SELECTION
 
 del = read.table('data/del/macrocycle_enrichment.tsv',sep='\t',header=T,quote='',comment.char='')
 
 # this one has to be raster because so many points, vector becomes too slow to load
+resx=600
 png('display_items/figure-4a.png',width=6.5*resx,height=3*resx,res=resx)
 par(mar=c(4,4,3,1))
 
@@ -515,12 +510,12 @@ legend(x=0,y=-65,legend=leg$leg,col=leg$col,text.col=leg$col,pch=19,horiz=T,bty=
 par(xpd=F)
 
 mtext(side=3,adj=0,padj=-0.5,line=0.5,font=2,cex=2,text='A')
-dev.off()
+unnecessary_message = dev.off()
 
 
 
 
-
+### FIGURE 5: IN SILICO SCREEN DSF VALIDATION
 
 awise_dsf = read.table('data/awise/dsf.tsv',sep='\t',header=T)
 awise_dsf$sem = awise_dsf$sd_delta_tm/sqrt(awise_dsf$n)
@@ -561,12 +556,14 @@ points(x=awise_dsf$x, y=awise_dsf$dtm_disp, pch=awise_dsf$pch, col=awise_dsf$col
 par(xpd=F)
 mtext(side=4, line=0.25, at=cutoffs, col=dmso_color, text=paste0(c('-','+'),'3 SD'), las=2)
 mtext('A', side=3, cex=2, adj = -0.1, line = 0.5)
-dev.off()
+unnecessary_message = dev.off()
 
 
 
 
-#### FIGURE S1: TROSY characterization of HuPrP90-231
+
+
+#### FIGURE S1: TROSY CHARACTERIZATION OF HuPrP90-231
 
 resx=600
 png('display_items/figure-s1.png',width=6.5*resx,height=4*resx,res=resx)
@@ -623,7 +620,7 @@ par(xpd=T)
 text(x=calzolai$h1+.2, y=calzolai$n15-1, labels=calzolai$label, col=text_color, pos=3, font=2, cex=0.6)
 par(xpd=F)
 
-dev.off()
+unnecessary_message = dev.off()
 
 
 
@@ -681,7 +678,7 @@ mtext(side=4, line=3.0, text='imidazole gradient (%B)', col='#FF9912', font=1)
 points(elution_concb$min, elution_concb$percentb, col='#FF9912', type='l', lwd=2)
 mtext('B', side=3, cex=2, adj = -0.1, line = 1.5)
 
-dev.off()
+unnecessary_message = dev.off()
 
 
 
