@@ -1,0 +1,4 @@
+screen	compounds	total_hits	positive_hits	negative_hits
+Primary (singleton)	30013	1129	492	637
+Validation (triplicate)	1129	282	176	106
+HSQC	84	0	0	0

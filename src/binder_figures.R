@@ -106,7 +106,7 @@ table1$n[table1$disp=='Schreiber chiral collection'] = table1$n[table1$disp=='Sc
 table1$stds[table1$disp=='Schreiber chiral collection'] = table1$stds[table1$disp=='Schreiber chiral collection'] + 1 # the 40 include 1 that was in the hit pool and went on to STD NMR
 sum(table1$n)
 
-write.table(table1, 'display_items/table1.tsv', sep='\t', row.names=F, col.names=T, quote=F)
+write.table(table1, 'display_items/table-1.tsv', sep='\t', row.names=F, col.names=T, quote=F)
 
 table1$color = rev(c('#1b9e77','#d95f02','#7570b3','#e7298a','#66a61e'))
 
@@ -247,8 +247,8 @@ dsf_retest_avg = sqldf("
                        and      smiles != ''
                        group by 1
                        order by 1
-                       ;") # 1187
-length(unique(dsf_retest_avg$smiles))
+                       ;") 
+#length(unique(dsf_retest_avg$smiles))
 colnames(dsf_retest_avg)[2] = 'delta_tm'
 
 dsf_primary$out3mad = (dsf_primary$tm_inf_ > overall_median_tm + 3*overall_mad | dsf_primary$tm_inf_ < overall_median_tm - 3*overall_mad)
@@ -263,8 +263,6 @@ dsf_primary_avg = sqldf("
                         group by 1
                         order by 1
                         ;") 
-sum(dsf_primary_avg$mean_tm > overall_median_tm + 3*overall_mad)
-sum(dsf_primary_avg$mean_tm < overall_median_tm - 3*overall_mad)
 
 dsf_primary_avg$delta_tm = dsf_primary_avg$mean_tm - overall_median_tm
 
@@ -283,18 +281,11 @@ dsf_retest_pos_hits_smiles = read.table('data/nibr_dsf/dsf_retest_positive_hits.
 retest_results$retest_hit = 'no'
 retest_results$retest_hit[retest_results$smiles %in% dsf_retest_neg_hits_smiles$smiles] = 'negative'
 retest_results$retest_hit[retest_results$smiles %in% dsf_retest_pos_hits_smiles$smiles] = 'positive'
-table(retest_results$retest_hit)
-sum(retest_results$primary_delta < 0 & retest_results$mean_dtm_mads < -3)
-sum(retest_results$primary_delta > 0 & retest_results$mean_dtm_mads > 3)
 retest_results$primary_delta = pmax(pmin(retest_results$primary_delta, 3),-3)
 retest_results$retest_delta = pmax(pmin(retest_results$retest_delta, 3),-3)
 
 dsf_primary$retested = dsf_primary$smiles %in% retest_results$smiles & (dsf_primary$delta_tm > 3*overall_mad | dsf_primary$delta_tm < -3*overall_mad)
 retest_results$hsqced = retest_results$smiles %in% dsf_hsqc$smiles
-sum(retest_results$smiles %in% dsf_hsqc$smiles)
-
-sum(retest_results$retest_delta[retest_results$hsqced] < 0)
-sum(retest_results$retest_delta[retest_results$hsqced] > 0)
 
 
 # identify the highlighted hit in the retest data
@@ -449,10 +440,25 @@ legend('topleft',legend=leg$disp,col=leg$col,lwd=leg$lwd,text.col=leg$col,bty='n
 mtext('D', side=3, cex=2, adj = -0.1, line = 0.5)
 dev.off()
 
-# check final stats
-length(unique(dsf_primary$smiles))
-nrow(retest_results)
-sum(retest_results$hsqced)
+### TABLE 3
+
+table3 = data.frame(screen=c('Primary (singleton)', 'Validation (triplicate)', 'HSQC'),
+                    compounds=integer(3),
+                    total_hits=integer(3),
+                    positive_hits=integer(3),
+                    negative_hits=integer(3))
+table3$compounds[1] = length(unique(dsf_primary$smiles))
+table3$total_hits[1] = table3$compounds[2] = nrow(retest_results)
+table3$positive_hits[1] = sum(dsf_primary_avg$mean_tm > overall_median_tm + 3*overall_mad)
+table3$negative_hits[1] = sum(dsf_primary_avg$mean_tm < overall_median_tm - 3*overall_mad)
+table3$positive_hits[2] = sum(retest_results$retest_hit=='positive')
+table3$negative_hits[2] = sum(retest_results$retest_hit=='negative')
+table3$total_hits[2] = table3$positive_hits[2] + table3$negative_hits[2]
+table3$compounds[3] = sum(retest_results$smiles %in% dsf_hsqc$smiles)
+table3$total_hits[3] = 0
+
+write.table(table3, 'display_items/table-3.tsv', sep='\t', col.names=T, row.names=F, quote=F)
+
 
 
 
