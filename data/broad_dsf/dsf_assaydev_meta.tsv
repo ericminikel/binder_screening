@@ -1,0 +1,309 @@
+expt	row	col	variable	condition
+assay-volume	F	1	µM assay volume	10
+assay-volume	F	2	µM assay volume	10
+assay-volume	F	3	µM assay volume	10
+assay-volume	F	4	µM assay volume	10
+assay-volume	F	5	µM assay volume	10
+assay-volume	F	6	µM assay volume	10
+assay-volume	F	7	µM assay volume	10
+assay-volume	F	8	µM assay volume	10
+assay-volume	F	9	µM assay volume	20
+assay-volume	F	10	µM assay volume	20
+assay-volume	F	11	µM assay volume	20
+assay-volume	F	12	µM assay volume	20
+assay-volume	F	13	µM assay volume	20
+assay-volume	F	14	µM assay volume	20
+assay-volume	F	15	µM assay volume	20
+assay-volume	F	16	µM assay volume	20
+assay-volume	F	17	µM assay volume	25
+assay-volume	F	18	µM assay volume	25
+assay-volume	F	19	µM assay volume	25
+assay-volume	F	20	µM assay volume	25
+assay-volume	F	21	µM assay volume	25
+assay-volume	F	22	µM assay volume	25
+assay-volume	F	23	µM assay volume	25
+assay-volume	F	24	µM assay volume	25
+assay-volume	G	1	µM assay volume	30
+assay-volume	G	2	µM assay volume	30
+assay-volume	G	3	µM assay volume	30
+assay-volume	G	4	µM assay volume	30
+assay-volume	G	5	µM assay volume	30
+assay-volume	G	6	µM assay volume	30
+assay-volume	G	7	µM assay volume	30
+assay-volume	G	8	µM assay volume	30
+assay-volume	G	9	µM assay volume	35
+assay-volume	G	10	µM assay volume	35
+assay-volume	G	11	µM assay volume	35
+assay-volume	G	12	µM assay volume	35
+assay-volume	G	13	µM assay volume	35
+assay-volume	G	14	µM assay volume	35
+assay-volume	G	15	µM assay volume	35
+assay-volume	G	16	µM assay volume	35
+fetmpyp	B	2	DMSO control	0
+fetmpyp	C	2	DMSO control	0
+fetmpyp	D	2	DMSO control	0
+fetmpyp	E	2	FeTMPyP 20 µM	20
+fetmpyp	F	2	FeTMPyP 20 µM	20
+fetmpyp	G	2	FeTMPyP 20 µM	20
+fetmpyp	B	3	DMSO control	0
+fetmpyp	C	3	DMSO control	0
+fetmpyp	D	3	DMSO control	0
+fetmpyp	E	3	FeTMPyP 20 µM	20
+fetmpyp	F	3	FeTMPyP 20 µM	20
+fetmpyp	G	3	FeTMPyP 20 µM	20
+fetmpyp	B	4	DMSO control	0
+fetmpyp	C	4	DMSO control	0
+fetmpyp	D	4	DMSO control	0
+fetmpyp	E	4	FeTMPyP 20 µM	20
+fetmpyp	F	4	FeTMPyP 20 µM	20
+fetmpyp	G	4	FeTMPyP 20 µM	20
+fetmpyp	B	5	DMSO control	0
+fetmpyp	C	5	DMSO control	0
+fetmpyp	D	5	DMSO control	0
+fetmpyp	E	5	FeTMPyP 20 µM	20
+fetmpyp	F	5	FeTMPyP 20 µM	20
+fetmpyp	G	5	FeTMPyP 20 µM	20
+fetmpyp	B	6	DMSO control	0
+fetmpyp	C	6	DMSO control	0
+fetmpyp	D	6	DMSO control	0
+fetmpyp	E	6	FeTMPyP 20 µM	20
+fetmpyp	F	6	FeTMPyP 20 µM	20
+fetmpyp	G	6	FeTMPyP 20 µM	20
+fetmpyp	B	7	DMSO control	0
+fetmpyp	C	7	DMSO control	0
+fetmpyp	D	7	DMSO control	0
+fetmpyp	E	7	FeTMPyP 20 µM	20
+fetmpyp	F	7	FeTMPyP 20 µM	20
+fetmpyp	G	7	FeTMPyP 20 µM	20
+fetmpyp	B	8	DMSO control	0
+fetmpyp	C	8	DMSO control	0
+fetmpyp	D	8	DMSO control	0
+fetmpyp	E	8	FeTMPyP 20 µM	20
+fetmpyp	F	8	FeTMPyP 20 µM	20
+fetmpyp	G	8	FeTMPyP 20 µM	20
+fetmpyp	B	9	DMSO control	0
+fetmpyp	C	9	DMSO control	0
+fetmpyp	D	9	DMSO control	0
+fetmpyp	E	9	FeTMPyP 20 µM	20
+fetmpyp	F	9	FeTMPyP 20 µM	20
+fetmpyp	G	9	FeTMPyP 20 µM	20
+fetmpyp	B	10	DMSO control	0
+fetmpyp	C	10	DMSO control	0
+fetmpyp	D	10	DMSO control	0
+fetmpyp	E	10	FeTMPyP 20 µM	20
+fetmpyp	F	10	FeTMPyP 20 µM	20
+fetmpyp	G	10	FeTMPyP 20 µM	20
+fetmpyp	B	11	DMSO control	0
+fetmpyp	C	11	DMSO control	0
+fetmpyp	D	11	DMSO control	0
+fetmpyp	E	11	FeTMPyP 20 µM	20
+fetmpyp	F	11	FeTMPyP 20 µM	20
+fetmpyp	G	11	FeTMPyP 20 µM	20
+buffer	D	1	HEPES	HEPES
+buffer	D	2	HEPES	HEPES
+buffer	D	3	HEPES	HEPES
+buffer	D	4	HEPES	HEPES
+buffer	D	5	HEPES	HEPES
+buffer	D	6	HEPES	HEPES
+buffer	D	7	HEPES	HEPES
+buffer	D	8	HEPES	HEPES
+buffer	D	9	PBS	PBS
+buffer	D	10	PBS	PBS
+buffer	D	11	PBS	PBS
+buffer	D	12	PBS	PBS
+buffer	D	13	PBS	PBS
+buffer	D	14	PBS	PBS
+buffer	D	15	PBS	PBS
+buffer	D	16	PBS	PBS
+zinc	G	1	µM Zn2+	0
+zinc	G	2	µM Zn2+	0
+zinc	G	3	µM Zn2+	0
+zinc	G	4	µM Zn2+	0
+zinc	G	5	µM Zn2+	0
+zinc	G	6	µM Zn2+	0
+zinc	G	7	µM Zn2+	0
+zinc	G	8	µM Zn2+	0
+zinc	G	9	µM Zn2+	0
+zinc	G	10	µM Zn2+	0
+zinc	G	11	µM Zn2+	0
+zinc	G	12	µM Zn2+	0
+zinc	G	13	µM Zn2+	0
+zinc	G	14	µM Zn2+	0
+zinc	G	15	µM Zn2+	0
+zinc	G	16	µM Zn2+	0
+zinc	G	17	µM Zn2+	0
+zinc	G	18	µM Zn2+	0
+zinc	G	19	µM Zn2+	0
+zinc	G	20	µM Zn2+	0
+zinc	G	21	µM Zn2+	0
+zinc	G	22	µM Zn2+	0
+zinc	G	23	µM Zn2+	0
+zinc	G	24	µM Zn2+	0
+zinc	H	1	µM Zn2+	5
+zinc	H	2	µM Zn2+	5
+zinc	H	3	µM Zn2+	5
+zinc	H	4	µM Zn2+	5
+zinc	H	5	µM Zn2+	5
+zinc	H	6	µM Zn2+	5
+zinc	H	7	µM Zn2+	5
+zinc	H	8	µM Zn2+	5
+zinc	H	9	µM Zn2+	5
+zinc	H	10	µM Zn2+	5
+zinc	H	11	µM Zn2+	5
+zinc	H	12	µM Zn2+	5
+zinc	H	13	µM Zn2+	5
+zinc	H	14	µM Zn2+	5
+zinc	H	15	µM Zn2+	5
+zinc	H	16	µM Zn2+	5
+zinc	H	17	µM Zn2+	5
+zinc	H	18	µM Zn2+	5
+zinc	H	19	µM Zn2+	5
+zinc	H	20	µM Zn2+	5
+zinc	H	21	µM Zn2+	5
+zinc	H	22	µM Zn2+	5
+zinc	H	23	µM Zn2+	5
+zinc	H	24	µM Zn2+	5
+zinc	I	1	µM Zn2+	10
+zinc	I	2	µM Zn2+	10
+zinc	I	3	µM Zn2+	10
+zinc	I	4	µM Zn2+	10
+zinc	I	5	µM Zn2+	10
+zinc	I	6	µM Zn2+	10
+zinc	I	7	µM Zn2+	10
+zinc	I	8	µM Zn2+	10
+zinc	I	9	µM Zn2+	10
+zinc	I	10	µM Zn2+	10
+zinc	I	11	µM Zn2+	10
+zinc	I	12	µM Zn2+	10
+zinc	I	13	µM Zn2+	10
+zinc	I	14	µM Zn2+	10
+zinc	I	15	µM Zn2+	10
+zinc	I	16	µM Zn2+	10
+zinc	I	17	µM Zn2+	10
+zinc	I	18	µM Zn2+	10
+zinc	I	19	µM Zn2+	10
+zinc	I	20	µM Zn2+	10
+zinc	I	21	µM Zn2+	10
+zinc	I	22	µM Zn2+	10
+zinc	I	23	µM Zn2+	10
+zinc	I	24	µM Zn2+	10
+zinc	J	1	µM Zn2+	20
+zinc	J	2	µM Zn2+	20
+zinc	J	3	µM Zn2+	20
+zinc	J	4	µM Zn2+	20
+zinc	J	5	µM Zn2+	20
+zinc	J	6	µM Zn2+	20
+zinc	J	7	µM Zn2+	20
+zinc	J	8	µM Zn2+	20
+zinc	J	9	µM Zn2+	20
+zinc	J	10	µM Zn2+	20
+zinc	J	11	µM Zn2+	20
+zinc	J	12	µM Zn2+	20
+zinc	J	13	µM Zn2+	20
+zinc	J	14	µM Zn2+	20
+zinc	J	15	µM Zn2+	20
+zinc	J	16	µM Zn2+	20
+zinc	J	17	µM Zn2+	20
+zinc	J	18	µM Zn2+	20
+zinc	J	19	µM Zn2+	20
+zinc	J	20	µM Zn2+	20
+zinc	J	21	µM Zn2+	20
+zinc	J	22	µM Zn2+	20
+zinc	J	23	µM Zn2+	20
+zinc	J	24	µM Zn2+	20
+copper	C	1	µM Cu2+	0
+copper	C	2	µM Cu2+	0
+copper	C	3	µM Cu2+	0
+copper	C	4	µM Cu2+	0
+copper	C	5	µM Cu2+	0
+copper	C	6	µM Cu2+	0
+copper	C	7	µM Cu2+	0
+copper	C	8	µM Cu2+	0
+copper	C	9	µM Cu2+	0
+copper	C	10	µM Cu2+	0
+copper	C	11	µM Cu2+	0
+copper	C	12	µM Cu2+	0
+copper	C	13	µM Cu2+	0
+copper	C	14	µM Cu2+	0
+copper	C	15	µM Cu2+	0
+copper	C	16	µM Cu2+	0
+copper	C	17	µM Cu2+	0
+copper	C	18	µM Cu2+	0
+copper	C	19	µM Cu2+	0
+copper	C	20	µM Cu2+	0
+copper	C	21	µM Cu2+	0
+copper	C	22	µM Cu2+	0
+copper	C	23	µM Cu2+	0
+copper	C	24	µM Cu2+	0
+copper	D	1	µM Cu2+	5
+copper	D	2	µM Cu2+	5
+copper	D	3	µM Cu2+	5
+copper	D	4	µM Cu2+	5
+copper	D	5	µM Cu2+	5
+copper	D	6	µM Cu2+	5
+copper	D	7	µM Cu2+	5
+copper	D	8	µM Cu2+	5
+copper	D	9	µM Cu2+	5
+copper	D	10	µM Cu2+	5
+copper	D	11	µM Cu2+	5
+copper	D	12	µM Cu2+	5
+copper	D	13	µM Cu2+	5
+copper	D	14	µM Cu2+	5
+copper	D	15	µM Cu2+	5
+copper	D	16	µM Cu2+	5
+copper	D	17	µM Cu2+	5
+copper	D	18	µM Cu2+	5
+copper	D	19	µM Cu2+	5
+copper	D	20	µM Cu2+	5
+copper	D	21	µM Cu2+	5
+copper	D	22	µM Cu2+	5
+copper	D	23	µM Cu2+	5
+copper	D	24	µM Cu2+	5
+copper	E	1	µM Cu2+	10
+copper	E	2	µM Cu2+	10
+copper	E	3	µM Cu2+	10
+copper	E	4	µM Cu2+	10
+copper	E	5	µM Cu2+	10
+copper	E	6	µM Cu2+	10
+copper	E	7	µM Cu2+	10
+copper	E	8	µM Cu2+	10
+copper	E	9	µM Cu2+	10
+copper	E	10	µM Cu2+	10
+copper	E	11	µM Cu2+	10
+copper	E	12	µM Cu2+	10
+copper	E	13	µM Cu2+	10
+copper	E	14	µM Cu2+	10
+copper	E	15	µM Cu2+	10
+copper	E	16	µM Cu2+	10
+copper	E	17	µM Cu2+	10
+copper	E	18	µM Cu2+	10
+copper	E	19	µM Cu2+	10
+copper	E	20	µM Cu2+	10
+copper	E	21	µM Cu2+	10
+copper	E	22	µM Cu2+	10
+copper	E	23	µM Cu2+	10
+copper	E	24	µM Cu2+	10
+copper	F	1	µM Cu2+	20
+copper	F	2	µM Cu2+	20
+copper	F	3	µM Cu2+	20
+copper	F	4	µM Cu2+	20
+copper	F	5	µM Cu2+	20
+copper	F	6	µM Cu2+	20
+copper	F	7	µM Cu2+	20
+copper	F	8	µM Cu2+	20
+copper	F	9	µM Cu2+	20
+copper	F	10	µM Cu2+	20
+copper	F	11	µM Cu2+	20
+copper	F	12	µM Cu2+	20
+copper	F	13	µM Cu2+	20
+copper	F	14	µM Cu2+	20
+copper	F	15	µM Cu2+	20
+copper	F	16	µM Cu2+	20
+copper	F	17	µM Cu2+	20
+copper	F	18	µM Cu2+	20
+copper	F	19	µM Cu2+	20
+copper	F	20	µM Cu2+	20
+copper	F	21	µM Cu2+	20
+copper	F	22	µM Cu2+	20
+copper	F	23	µM Cu2+	20
+copper	F	24	µM Cu2+	20

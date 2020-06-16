@@ -1,0 +1,15 @@
+expt	variable	value	color
+prp-titration	µM PrP	10	#FDCC8A
+prp-titration	µM PrP	20	#FC8D59
+prp-titration	µM PrP	30	#E34A33
+prp-titration	µM PrP	50	#B30000
+dmso-titration	% DMSO (v/v)	0	#D0D1E6
+dmso-titration	% DMSO (v/v)	0.5	#A6BDDB
+dmso-titration	% DMSO (v/v)	1	#74A9CF
+dmso-titration	% DMSO (v/v)	2	#2B8CBE
+dmso-titration	% DMSO (v/v)	5	#045A8D
+dye-titration	X dye	2	#FEC44F
+dye-titration	X dye	5	#FE9929
+dye-titration	X dye	10	#EC7014
+dye-titration	X dye	15	#CC4C02
+dye-titration	X dye	20	#8C2D04

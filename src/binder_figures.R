@@ -462,6 +462,270 @@ write.table(table3, 'display_items/table-3.tsv', sep='\t', col.names=T, row.name
 
 
 
+### FIGURE S4: DSF ASSAY DEV
+
+pdf('display_items/figure-s4.pdf',width=6.5,height=8)
+
+par(mfrow=c(8,5))
+par(mar=c(2,2.5,2,1))
+
+PANEL_LETTERS = c(LETTERS, paste0('A',LETTERS))
+panel = 0
+
+broad_adev_data = read.table('data/broad_dsf/dsf_assaydev_data.tsv',sep='\t',header=T)
+broad_adev_meta = read.table('data/broad_dsf/dsf_assaydev_meta.tsv',sep='\t',header=T)
+broad_adev_params = read.table('data/broad_dsf/dsf_assaydev_params.tsv',sep='\t',header=T,comment.char='')
+
+broad_adev_params$uid = paste0(broad_adev_params$expt, broad_adev_params$value)
+broad_adev_meta$uid = paste0(broad_adev_meta$expt, broad_adev_meta$condition)
+broad_adev_meta$color = broad_adev_params$color[match(broad_adev_meta$uid, broad_adev_params$uid)]
+broad_adev_meta$wellid = paste0(broad_adev_meta$expt, broad_adev_meta$row, broad_adev_meta$col)
+broad_adev_data$wellid = paste0(broad_adev_data$expt, broad_adev_data$samplepos)
+broad_adev_data$color = broad_adev_meta$color[match(broad_adev_data$wellid, broad_adev_meta$wellid)]
+broad_adev_data$uid = broad_adev_meta$uid[match(broad_adev_data$wellid, broad_adev_meta$wellid)]
+
+ylims=c(0,5)
+subs1 = subset(broad_adev_data, expt=='assay-volume')
+for (id in unique(subs1$uid)) {
+  subs2 = subset(subs1, uid==id)
+  plot(NA, NA, xlim=xlims, ylim=ylims, xaxs='i', yaxs='i', ann=F, axes=F)
+  axis(side=1, at=0:100, labels=NA, tck=-0.025)
+  axis(side=1, at=0:10*10, labels=NA, tck=-0.05)
+  axis(side=1, at=0:10*10, line=-1, lwd=0)
+  axis(side=2, at=0:20, labels=NA, tck=-0.025)
+  axis(side=2, at=0:4*5, labels=NA, tck=-0.05)
+  axis(side=2, at=0:4*5, line=-0.5, las=2, lwd=0)
+  mtext(side=1, line=1.0, text='temperature (°C)', cex=0.8)
+  mtext(side=2, line=1.25, text='intensity', cex=0.8)
+  for (well in unique(subs1$samplepos)) {
+    subs3 = subset(subs2, samplepos==well)
+    points(subs3$temp, subs3$x465_580, type='l', lwd=1, col=subs3$color)
+  }
+  paramrow = subset(broad_adev_params, uid==id)
+  mtext(side=3, line=-1, text=gsub(' assay volume',' vol',paste0(paramrow$value, paramrow$variable)), cex=0.9)
+  panel = panel + 1
+  mtext(side=3, line=0.25, adj=-0.1, text=PANEL_LETTERS[panel], cex=0.9, font=2)
+}
+
+ylims=c(0,7)
+subs1 = subset(broad_adev_data, expt=='buffer')
+for (id in unique(subs1$uid)) {
+  subs2 = subset(subs1, uid==id)
+  plot(NA, NA, xlim=xlims, ylim=ylims, xaxs='i', yaxs='i', ann=F, axes=F)
+  axis(side=1, at=0:100, labels=NA, tck=-0.025)
+  axis(side=1, at=0:10*10, labels=NA, tck=-0.05)
+  axis(side=1, at=0:10*10, line=-1, lwd=0)
+  axis(side=2, at=0:20, labels=NA, tck=-0.025)
+  axis(side=2, at=0:4*5, labels=NA, tck=-0.05)
+  axis(side=2, at=0:4*5, line=-0.5, las=2, lwd=0)
+  mtext(side=1, line=1.0, text='temperature (°C)', cex=0.8)
+  mtext(side=2, line=1.25, text='intensity', cex=0.8)
+  for (well in unique(subs1$samplepos)) {
+    subs3 = subset(subs2, samplepos==well)
+    points(subs3$temp, subs3$x465_580, type='l', lwd=1, col=subs3$color)
+  }
+  paramrow = subset(broad_adev_params, uid==id)
+  mtext(side=3, line=-1, text=paste0(paramrow$variable), cex=0.9)
+  panel = panel + 1
+  mtext(side=3, line=0.25, adj=-0.1, text=LETTERS[panel], cex=0.9, font=2)
+}
+plot(NA, NA, xlim=0:1, ylim=0:1, axes=F, ann=F)
+plot(NA, NA, xlim=0:1, ylim=0:1, axes=F, ann=F)
+plot(NA, NA, xlim=0:1, ylim=0:1, axes=F, ann=F)
+
+ylims=c(0,7)
+subs1 = subset(broad_adev_data, expt=='zinc')
+for (id in unique(subs1$uid)) {
+  subs2 = subset(subs1, uid==id)
+  plot(NA, NA, xlim=xlims, ylim=ylims, xaxs='i', yaxs='i', ann=F, axes=F)
+  axis(side=1, at=0:100, labels=NA, tck=-0.025)
+  axis(side=1, at=0:10*10, labels=NA, tck=-0.05)
+  axis(side=1, at=0:10*10, line=-1, lwd=0)
+  axis(side=2, at=0:20, labels=NA, tck=-0.025)
+  axis(side=2, at=0:4*5, labels=NA, tck=-0.05)
+  axis(side=2, at=0:4*5, line=-0.5, las=2, lwd=0)
+  mtext(side=1, line=1.0, text='temperature (°C)', cex=0.8)
+  mtext(side=2, line=1.25, text='intensity', cex=0.8)
+  for (well in unique(subs1$samplepos)) {
+    subs3 = subset(subs2, samplepos==well)
+    points(subs3$temp, subs3$x465_580, type='l', lwd=1, col=subs3$color)
+  }
+  paramrow = subset(broad_adev_params, uid==id)
+  mtext(side=3, line=-1, text=paste0(paramrow$value, paramrow$variable), cex=0.9)
+  panel = panel + 1
+  mtext(side=3, line=0.25, adj=-0.1, text=LETTERS[panel], cex=0.9, font=2)
+}
+plot(NA, NA, xlim=0:1, ylim=0:1, axes=F, ann=F)
+
+ylims=c(0,7)
+subs1 = subset(broad_adev_data, expt=='copper')
+for (id in unique(subs1$uid)) {
+  subs2 = subset(subs1, uid==id)
+  plot(NA, NA, xlim=xlims, ylim=ylims, xaxs='i', yaxs='i', ann=F, axes=F)
+  axis(side=1, at=0:100, labels=NA, tck=-0.025)
+  axis(side=1, at=0:10*10, labels=NA, tck=-0.05)
+  axis(side=1, at=0:10*10, line=-1, lwd=0)
+  axis(side=2, at=0:20, labels=NA, tck=-0.025)
+  axis(side=2, at=0:4*5, labels=NA, tck=-0.05)
+  axis(side=2, at=0:4*5, line=-0.5, las=2, lwd=0)
+  mtext(side=1, line=1.0, text='temperature (°C)', cex=0.8)
+  mtext(side=2, line=1.25, text='intensity', cex=0.8)
+  for (well in unique(subs1$samplepos)) {
+    subs3 = subset(subs2, samplepos==well)
+    points(subs3$temp, subs3$x465_580, type='l', lwd=1, col=subs3$color)
+  }
+  paramrow = subset(broad_adev_params, uid==id)
+  mtext(side=3, line=-1, text=paste0(paramrow$value, paramrow$variable), cex=0.9)
+  panel = panel + 1
+  mtext(side=3, line=0.25, adj=-0.1, text=PANEL_LETTERS[panel], cex=0.9, font=2)
+}
+plot(NA, NA, xlim=0:1, ylim=0:1, axes=F, ann=F)
+
+ylims=c(0,25)
+subs1 = subset(broad_adev_data, expt=='fetmpyp')
+for (id in unique(subs1$uid)) {
+  subs2 = subset(subs1, uid==id)
+  plot(NA, NA, xlim=xlims, ylim=ylims, xaxs='i', yaxs='i', ann=F, axes=F)
+  axis(side=1, at=0:100, labels=NA, tck=-0.025)
+  axis(side=1, at=0:10*10, labels=NA, tck=-0.05)
+  axis(side=1, at=0:10*10, line=-1, lwd=0)
+  axis(side=2, at=0:20, labels=NA, tck=-0.025)
+  axis(side=2, at=0:4*5, labels=NA, tck=-0.05)
+  axis(side=2, at=0:4*5, line=-0.5, las=2, lwd=0)
+  mtext(side=1, line=1.0, text='temperature (°C)', cex=0.8)
+  mtext(side=2, line=1.25, text='intensity', cex=0.8)
+  for (well in unique(subs1$samplepos)) {
+    subs3 = subset(subs2, samplepos==well)
+    points(subs3$temp, subs3$x465_580, type='l', lwd=1, col=subs3$color)
+  }
+  paramrow = subset(broad_adev_params, uid==id)
+  mtext(side=3, line=-1, text=gsub(' .*','',paste0(paramrow$variable)), cex=0.9)
+  panel = panel + 1
+  mtext(side=3, line=0.25, adj=-0.1, text=PANEL_LETTERS[panel], cex=0.9, font=2)
+}
+plot(NA, NA, xlim=0:1, ylim=0:1, axes=F, ann=F)
+plot(NA, NA, xlim=0:1, ylim=0:1, axes=F, ann=F)
+plot(NA, NA, xlim=0:1, ylim=0:1, axes=F, ann=F)
+
+
+nibr_adev_data = read.table('data/nibr_dsf/dsf_assaydev_data.tsv',sep='\t',header=T)
+nibr_adev_meta = read.table('data/nibr_dsf/dsf_assaydev_meta.tsv',sep='\t',header=T)
+nibr_adev_params = read.table('data/nibr_dsf/dsf_assaydev_params.tsv',sep='\t',header=T,comment.char='')
+
+nibr_adev_params$uid = paste0(nibr_adev_params$expt, nibr_adev_params$value)
+nibr_adev_meta$uid = paste0(nibr_adev_meta$expt, nibr_adev_meta$condition)
+nibr_adev_meta$color = nibr_adev_params$color[match(nibr_adev_meta$uid, nibr_adev_params$uid)]
+nibr_adev_meta$wellid = paste0(nibr_adev_meta$expt, nibr_adev_meta$row, nibr_adev_meta$col)
+nibr_adev_data$wellid = paste0(nibr_adev_data$expt, nibr_adev_data$samplepos)
+nibr_adev_data$color = nibr_adev_meta$color[match(nibr_adev_data$wellid, nibr_adev_meta$wellid)]
+nibr_adev_data$uid = nibr_adev_meta$uid[match(nibr_adev_data$wellid, nibr_adev_meta$wellid)]
+
+
+xlims = c(40,80)
+ylims = c(0,10)
+
+subs1 = subset(nibr_adev_data, expt=='dye-titration')
+for (id in unique(subs1$uid)) {
+  subs2 = subset(subs1, uid==id)
+  plot(NA, NA, xlim=xlims, ylim=ylims, xaxs='i', yaxs='i', ann=F, axes=F)
+  axis(side=1, at=0:100, labels=NA, tck=-0.025)
+  axis(side=1, at=0:10*10, labels=NA, tck=-0.05)
+  axis(side=1, at=0:10*10, line=-1, lwd=0)
+  axis(side=2, at=0:20, labels=NA, tck=-0.025)
+  axis(side=2, at=0:4*5, labels=NA, tck=-0.05)
+  axis(side=2, at=0:4*5, line=-0.5, las=2, lwd=0)
+  mtext(side=1, line=1.0, text='temperature (°C)', cex=0.8)
+  mtext(side=2, line=1.25, text='intensity', cex=0.8)
+  for (well in unique(subs1$samplepos)) {
+    subs3 = subset(subs2, samplepos==well)
+    points(subs3$temp, subs3$x465_580, type='l', lwd=1, col=subs3$color)
+  }
+  paramrow = subset(nibr_adev_params, uid==id)
+  mtext(side=3, line=-1, text=paste0(paramrow$value, paramrow$variable), cex=0.9)
+  panel = panel + 1
+  mtext(side=3, line=0.25, adj=-0.1, text=PANEL_LETTERS[panel], cex=0.9, font=2)
+}
+
+subs1 = subset(nibr_adev_data, expt=='dmso-titration')
+for (id in unique(subs1$uid)) {
+  subs2 = subset(subs1, uid==id)
+  plot(NA, NA, xlim=xlims, ylim=ylims, xaxs='i', yaxs='i', ann=F, axes=F)
+  axis(side=1, at=0:100, labels=NA, tck=-0.025)
+  axis(side=1, at=0:10*10, labels=NA, tck=-0.05)
+  axis(side=1, at=0:10*10, line=-1, lwd=0)
+  axis(side=2, at=0:20, labels=NA, tck=-0.025)
+  axis(side=2, at=0:4*5, labels=NA, tck=-0.05)
+  axis(side=2, at=0:4*5, line=-0.5, las=2, lwd=0)
+  mtext(side=1, line=1.0, text='temperature (°C)', cex=0.8)
+  mtext(side=2, line=1.25, text='intensity', cex=0.8)
+  for (well in unique(subs1$samplepos)) {
+    subs3 = subset(subs2, samplepos==well)
+    points(subs3$temp, subs3$x465_580, type='l', lwd=1, col=subs3$color)
+  }
+  paramrow = subset(nibr_adev_params, uid==id)
+  mtext(side=3, line=-1, text=gsub(' \\(.*','',paste0(paramrow$value, paramrow$variable)), cex=0.9)
+  panel = panel + 1
+  mtext(side=3, line=0.25, adj=-0.1, text=PANEL_LETTERS[panel], cex=0.9, font=2)
+}
+
+ylims = c(0,20)
+
+subs1 = subset(nibr_adev_data, expt=='prp-titration')
+for (id in unique(subs1$uid)) {
+  subs2 = subset(subs1, uid==id)
+  plot(NA, NA, xlim=xlims, ylim=ylims, xaxs='i', yaxs='i', ann=F, axes=F)
+  axis(side=1, at=0:100, labels=NA, tck=-0.025)
+  axis(side=1, at=0:10*10, labels=NA, tck=-0.05)
+  axis(side=1, at=0:10*10, line=-1, lwd=0)
+  axis(side=2, at=0:20, labels=NA, tck=-0.025)
+  axis(side=2, at=0:4*5, labels=NA, tck=-0.05)
+  axis(side=2, at=0:4*5, line=-0.5, las=2, lwd=0)
+  mtext(side=1, line=1.0, text='temperature (°C)', cex=0.8)
+  mtext(side=2, line=1.25, text='intensity', cex=0.8)
+  for (well in unique(subs1$samplepos)) {
+    subs3 = subset(subs2, samplepos==well)
+    points(subs3$temp, subs3$x465_580, type='l', lwd=1, col=subs3$color)
+  }
+  paramrow = subset(nibr_adev_params, uid==id)
+  mtext(side=3, line=-1, text=paste0(paramrow$value, paramrow$variable), cex=0.9)
+  panel = panel + 1
+  mtext(side=3, line=0.25, adj=-0.1, text=PANEL_LETTERS[panel], cex=0.9, font=2)
+}
+plot(NA, NA, xlim=0:1, ylim=0:1, axes=F, ann=F)
+
+unnecessary_message = dev.off()
+
+
+
+### FIGURE S2B: BENZIMIDAZOLE DSF
+
+cairo_pdf('display_items/figure-s2d.pdf',width=3.5,height=3.5)
+par(mar=c(3,3,1,1))
+
+benzi_dsf = read.table('data/broad_dsf/benzimidazole_dsf_tm.tsv',sep='\t',header=T)
+benzi_dsf$x = rep(1:2, each=8)
+benzi_dsf$col = rep(c('#000000','#FF0000'), each=8)
+plot(NA, NA, xlim=c(0.5, 2.5), ylim=range(benzi_dsf$tm)+c(-0.15, 0.15), axes=F, ann=F, xaxs='i', yaxs='i')
+axis(side=1, labels=NA, lwd.ticks=0)
+axis(side=1, at=1:2, labels=c('2% DMSO\n(apo)','500 µM\nbenzimidazole'), lwd=0)
+axis(side=2, at=seq(66,69,.1), labels=NA, tck=-0.025)
+axis(side=2, at=seq(66,69,.5), labels=NA, tck=-0.05)
+axis(side=2, at=seq(66,69,.5), line=-0.05, lwd=0, lw.ticks=1,las=2)
+mtext(side=2, line=1.5, text='Tm (°C)')
+set.seed(1)
+points(jitter(benzi_dsf$x,amount=.3), benzi_dsf$tm, col=alpha(benzi_dsf$col,.5), pch=19)
+smry = sqldf('select x, col, avg(tm) mean, stdev(tm) sd, count(*) n from benzi_dsf group by 1, 2 order by 1, 2;')
+smry$l95 = smry$mean - 1.96 * smry$sd / sqrt(smry$n)
+smry$u95 = smry$mean + 1.96 * smry$sd / sqrt(smry$n)
+segments(x0=smry$x-0.3, x1=smry$x+0.3, y0=smry$mean, col=smry$col, lwd=1.5)
+arrows(y0=smry$l95, y1=smry$u95, x0=smry$x, col=smry$col, code=3, length=0.1, angle=90, lwd=1.5)
+
+unnecessary_message = dev.off()
+
+
+
+
+
 
 
 
@@ -499,9 +763,9 @@ plot(NA, NA, xlim=xlims, ylim=ylims, axes=F, ann=F, xaxs='i', yaxs='i')
 xats = c(1,seq(5e4,2e5,by=5e4),256000)
 axis(side=1, at=xats, labels=NA)
 axis(side=1, at=xats, labels=formatC(rev(xats),format='d',big.mark=','), lwd=0, line=-0.5) # note reverse axis - lowest abundance at left, highest at right
-mtext(side=1, line=1.5, text='pre-enrichment rank abundance')
+mtext(side=1, line=1.5, text='Pre-enrichment rank abundance')
 axis(side=2, at=0:5*50, labels=c('0','50','100','150','200','250+'),las=2)
-mtext(side=2, line=3.0, text='fold enrichment')
+mtext(side=2, line=3.0, text='Fold enrichment')
 points(del$prerank, del$enrich, col=del$color, pch=20, cex=0.2)
 points(del$prerank[del$color != default_color], del$enrich[del$color != default_color], col=del$color[del$color != default_color], pch=20, cex=1)
 text(del$prerank[to_label], del$enrich[to_label], labels=del$sequence[to_label], pos=2, col=del$color[to_label], cex=0.9)
@@ -627,9 +891,9 @@ unnecessary_message = dev.off()
 
 
 
-#### FIGURE S4B: AKTA ELUTION CURVES
+#### FIGURE S5B: AKTA ELUTION CURVES
 
-pdf('display_items/figure-s4b.pdf',width=3.5,height=3.5)
+pdf('display_items/figure-s5b.pdf',width=3.5,height=3.5)
 
 relpath = 'data/elutions/'
 elution_files = list.files(relpath)

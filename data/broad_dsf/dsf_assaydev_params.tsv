@@ -1,0 +1,18 @@
+expt	variable	value	color
+assay-volume	µL assay volume	10	#FA9FB5
+assay-volume	µL assay volume	20	#F768A1
+assay-volume	µL assay volume	25	#DD3497
+assay-volume	µL assay volume	30	#AE017E
+assay-volume	µL assay volume	35	#7A0177
+fetmpyp	DMSO control	0	#FF9912
+fetmpyp	FeTMPyP 20 µM	20	#100722
+buffer	HEPES	HEPES	#7FBF7B
+buffer	PBS	PBS	#998EC3
+zinc	µM Zn2+	0	#CDC0B0
+zinc	µM Zn2+	5	#002266
+zinc	µM Zn2+	10	#0044BB
+zinc	µM Zn2+	20	#0088FF
+copper	µM Cu2+	0	#CDC0B0
+copper	µM Cu2+	5	#EDC393
+copper	µM Cu2+	10	#D98719
+copper	µM Cu2+	20	#B87333
