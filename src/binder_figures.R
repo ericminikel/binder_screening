@@ -150,7 +150,7 @@ plot(NA, NA, xlim=c(0,600), ylim=c(-6.5,6.5), xaxs='i', yaxs='i', ann=F, axes=F)
 axis(side=1, at=(0:6)*100, lwd=1, lwd.ticks=1)
 mtext(side=1, line=2.5, text='MW (Da)')
 axis(side=2, at=-7:7, lwd=1, lwd.ticks=1, las=2)
-mtext(side=2, line=2.5, text='log(P)')
+mtext(side=2, line=2.5, text='aLog(P)')
 rect(xleft=0, xright=300, ybottom=-6.5, ytop=3, border=NA, col=alpha(compliant_color, .5))
 points(frags$mw, frags$logp, pch=20, cex=0.08, col='black')
 compliant = mean(frags$mw <= 300 & frags$logp <= 3, na.rm=T)
@@ -781,7 +781,7 @@ unnecessary_message = dev.off()
 
 ### FIGURE 5: IN SILICO SCREEN DSF VALIDATION
 
-awise_dsf = read.table('data/awise/dsf.tsv',sep='\t',header=T)
+awise_dsf = read.table('data/awise/dsf.tsv',sep='\t',header=T,quote='',comment.char='')
 awise_dsf$sem = awise_dsf$sd_delta_tm/sqrt(awise_dsf$n)
 awise_dsf$l95 = awise_dsf$average_delta_tm - 1.96*awise_dsf$sem
 awise_dsf$u95 = awise_dsf$average_delta_tm + 1.96*awise_dsf$sem
