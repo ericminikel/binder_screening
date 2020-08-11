@@ -1,6 +1,6 @@
 This repository holds the source code and data for the following manuscript:
 
-[Reidenbach AG, Mesleh MF, Casalena D, Vallabh SM, Dahlin JL, Leed AJ, Chan AI, Usanov DL, Yehl JB, Lemke CT, Campbell AJ, Shah RN, Shrestha OK, Sacher JR, Rangel VL, Moroco JA, Sathappa M, Nonato MC, Kong NT, Wright SK, Liu DR, Wagner FF, Kaushik VK, Auld DS, Schreiber SL, Minikel EV. Multimodal small-molecule screening for human prion protein binders. bioRxiv. Cold Spring Harbor Laboratory; 2020 Jun 20;2020.06.18.159418.](https://doi.org/10.1101/2020.06.18.159418)
+[Reidenbach AG, Mesleh MF, Casalena D, Vallabh SM, Dahlin JL, Leed AJ, Chan AI, Usanov DL, Yehl JB, Lemke CT, Campbell AJ, Shah RN, Shrestha OK, Sacher JR, Rangel VL, Moroco JA, Sathappa M, Nonato MC, Nguyen KT, Wright SK, Liu DR, Wagner FF, Kaushik VK, Auld DS, Schreiber SL, Minikel EV. **Multimodal small-molecule screening for human prion protein binders.** _J Biol Chem_. 2020 Jul 28; PMID: 32723867](https://pubmed.ncbi.nlm.nih.gov/32723867/)
 
 Usage tips:
 
